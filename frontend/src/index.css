@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-surface: #fafafa;
+  --color-primary: #7c6ff7;
+  --color-secondary: #555555;
+  --color-accent: #8b5cf6;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --animate-fade-in: fadeIn 0.3s ease-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+  --animate-slide-in-left: slideInLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-out-left: slideOutLeft 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutLeft {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-[#111111] font-sans antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 rounded-full hover:bg-slate-300 transition-colors;
+  }
+}
+
+@utility glass {
+  @apply bg-white/80 backdrop-blur-md border border-[#EBEBEB];
+}
+
+@utility card {
+  @apply bg-surface border border-[#EBEBEB] rounded-xl overflow-hidden shadow-sm;
+}
+
+@utility animate-shake {
+  animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@utility hand-drawn {
+  font-family: 'Caveat', cursive;
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* ─── Suppress Excalidraw's native UI chrome ─────────────────────────────── */
+/* We render our own toolbar, hamburger, zoom, etc. */
+
+/* Hide the entire toolbar island */
+.excalidraw .App-toolbar-container,
+.excalidraw .App-toolbar,
+.excalidraw .App-toolbar__divider,
+.excalidraw .toolbar-divider,
+.excalidraw [class*="toolbar"] {
+  display: none !important;
+}
+
+/* Hide menu / hamburger at top-left */
+.excalidraw .menu-trigger,
+.excalidraw .ToolIcon_type_button__2Flaj {
+  display: none !important;
+}
+
+/* Hide left-side library panel & island */
+.excalidraw .layer-ui__library,
+.excalidraw .sidebar,
+.excalidraw .sidebar-trigger {
+  display: none !important;
+}
+
+/* Hide footer left (zoom/undo built-in) */
+.excalidraw .layer-ui__wrapper__footer-left {
+  display: none !important;
+}
+
+/* Hide footer right (help button built-in) */
+.excalidraw .layer-ui__wrapper__footer-right {
+  display: none !important;
+}
+
+/* Hide hand-tool hint */
+.excalidraw .help-tooltip,
+.excalidraw .hint {
+  display: none !important;
+}
+
+/* Hide top canvas action bar (export, reset etc.) */
+.excalidraw .canvas-actions,
+.excalidraw .App-menu,
+.excalidraw .App-menu__left,
+.excalidraw .App-menu__right {
+  display: none !important;
+}
+
+/* Hide the shape library trigger */
+.excalidraw .library-button {
+  display: none !important;
+}
+
+/* Hide Excalidraw lock icon */
+.excalidraw .lock-button {
+  display: none !important;
+}
+
+/* Make Excalidraw canvas transparent background (we paint our own) */
+.excalidraw .excalidraw-canvas {
+  background: transparent !important;
+}
+
+/* Allow pointer events through the canvas host wrapper */
+.excalidraw-wrapper {
+  pointer-events: all;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────── */
